@@ -1,13 +1,17 @@
-// reducer doesnt deppend on any component
-// actually other things depending on reducer
-// reducer keep the store, that keeps the states updated through actions
+import { MOVE_OBJECTS } from '../actions';
+import moveObjects from './moveObjects';
 
 const initialState = {
-    message: `It's easy to integrate React and Redux, isn't it?`,
-  };
-  
-  function reducer(state = initialState) {
-    return state;
+  angle: 45,
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case MOVE_OBJECTS:
+      return moveObjects(state, action);
+    default:
+      return state;
   }
-  
-  export default reducer;
+}
+
+export default reducer;

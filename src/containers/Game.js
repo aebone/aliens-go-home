@@ -1,14 +1,21 @@
-// connect throug connect() from redux the App and the reducers
 import { connect } from 'react-redux';
 
 import App from '../App';
+import { moveObjects } from '../actions/index';
 
 const mapStateToProps = state => ({
-  message: state.message,//from reducer
+  angle: state.angle,
+});
+
+const mapDispatchToProps = dispatch => ({
+  moveObjects: (mousePosition) => {
+    dispatch(moveObjects(mousePosition));
+  },
 });
 
 const Game = connect(
-  mapStateToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(App);
 
 export default Game;
